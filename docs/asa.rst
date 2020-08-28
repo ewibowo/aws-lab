@@ -13,7 +13,10 @@ In the initial topology:
    :width: 600px
    :alt: ASA initial topology
 
+Sample Day 0 Configuration
+
 .. code-block:: console
+
    ! ASA Version 9.4.1.200
    interface management0/0
    management-only
