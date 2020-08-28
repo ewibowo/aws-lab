@@ -3,7 +3,7 @@ Deploy the ASAv On the AWS Cloud
 
 In this chapter, we will be discussing about how to deploy Cisco ASAv (virtual Adaptive Security Appliance) on AWS (Amazon Web Services). 
 
-In the initial topology:
+Initial topology:
 
 * The primary elastic network interface (MGMT ENI) is mapped to the management interface (Management0/0).
 * Windows bastion host is deployed in a public subnet to be used for accessing the ASA management interface which is deployed in a private subnet via Local router.
@@ -13,16 +13,57 @@ In the initial topology:
    :width: 600px
    :alt: ASA initial topology
 
+Let's start building the initial topology by creating the VPC with CIDR 172.16.0.0/16:
+
+.. image:: VPC.png
+   :width: 600px
+   :alt: VPC
+
+Then we create two subnets: MGMT (management) subnet in a private subnet (172.16.0.0/24) and Outside subnet in a public subnet (172.16.1.0/24):
+
+.. image:: mgmt-outside-subnets.png
+   :width: 600px
+   :alt: Management and Outside subnets
+
+Create a IGW and attach it to the VPC. The IGW will be used as the default route target (next-hop) of the public subnet.
+
+.. image:: IGW.png
+   :width: 600px
+   :alt: IGW
+
+Create Ouside route table and a route entry with the destination any (0.0.0.0/0) and the target of the IGW as the next hop:
+
+.. image:: outside-RT.png
+   :width: 600px
+   :alt: Outside Route table
+
+Associate the Outside route table to the Outside subnet:
+
+.. image:: outside-RT-subnet-assoc.png
+   :width: 600px
+   :alt: Associate Outside Route table with Outside subnet
+
+Launch an EC2 instance named Windows Bastion and enable Auto-assign Public IP so that the EC2 instance can be accessed from Internet:
+
+.. image:: WIN-bastion.png
+   :width: 600px
+   :alt: Windows bastion
+
+.. image:: WIN-bastion-name.png
+   :width: 600px
+   :alt: Windows bastion name
+
 Sample Day 0 Configuration
 
 .. code-block:: console
 
-   ! ASA Version 9.4.1.200
+   ! required config start   
+   ! ASA Version 9.14(1)10
    interface management0/0
    management-only
    nameif management
    security-level 100
-   ip address dhcp setroute
+   ip address 172.16.0.254 255.255.255.0 
    no shut
    !
    same-security-traffic permit inter-interface
@@ -38,8 +79,8 @@ Sample Day 0 Configuration
    ! example dns configuration
    dns domain-lookup management
    DNS server-group DefaultDNS
-   ! where this address is the .2 on your public subnet
-   name-server 172.19.0.2
+   ! where this address is the .2 on your VPC CIDR
+   name-server 172.16.0.2
    ! example ntp configuration
    name 129.6.15.28 time-a.nist.gov
    name 129.6.15.29 time-b.nist.gov
@@ -47,6 +88,7 @@ Sample Day 0 Configuration
    ntp server time-c.nist.gov
    ntp server time-b.nist.gov
    ntp server time-a.nist.gov
+   ! required config end 
 
 Here is the topology of ASA on AWS VPC (virtual private cloud)
 
