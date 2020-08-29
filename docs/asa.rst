@@ -25,7 +25,7 @@ Then we create two subnets: MGMT (management) subnet in a private subnet (172.16
    :width: 600px
    :alt: Management and Outside subnets
 
-Create a IGW and attach it to the VPC. The IGW will be used as the default route target (next-hop) of the public subnet.
+Create a IGW and attach it to the VPC. The IGW will be used as the default route target (next-hop) of the public subnet:
 
 .. image:: IGW.png
    :width: 600px
@@ -43,15 +43,15 @@ Associate the Outside route table to the Outside subnet:
    :width: 600px
    :alt: Associate Outside Route table with Outside subnet
 
-Launch an EC2 instance named Windows Bastion and enable Auto-assign Public IP so that the EC2 instance can be accessed from Internet:
+Launch an EC2 instance as a bastion host and enable Auto-assign Public IP so that the EC2 instance can be accessed from Internet. The bastion host will be used as a jump box to allow access to the management interface of the ASA:
 
-.. image:: WIN-bastion.png
+.. image:: bastion.png
    :width: 600px
-   :alt: Windows bastion
+   :alt: Bastion host
 
-.. image:: WIN-bastion-name.png
+.. image:: bastion-name.png
    :width: 600px
-   :alt: Windows bastion name
+   :alt: Bastion hostname
 
 Sample Day 0 Configuration
 
