@@ -145,17 +145,11 @@ Let us setup the SSH forwarding agent so that we can login to the ASAv via the B
 
 Once the SSH key is cached, we can login direct to the ASAv via the Bastion host:
 
-.. image:: ASAv-SSH-forwarding-agent.png
-   :width: 600px
-   :alt: SSH forwarding agent
-
-
-Here is the final topology of ASA on AWS Virtual Private Cloud:
-
-.. image:: ASAv-login.png.png
+.. image:: ASAv-login.png
    :width: 600px
    :alt: ASAv login
 
+Here is the final topology of ASA on AWS Virtual Private Cloud.
 
 Several types of workload servers are placed in each subnet:
 
