@@ -124,6 +124,12 @@ To tighten the security, we configure the security group of the management inter
    :width: 600px
    :alt: ASAv Security Group
 
+Then launch the ASAv instance:
+
+.. image:: ASAv-launch.png
+   :width: 600px
+   :alt: ASAv Launching
+
 Here is the final topology of ASA on AWS Virtual Private Cloud:
 
 .. image:: ASA.png
