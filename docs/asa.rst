@@ -132,10 +132,9 @@ Then launch the ASAv instance:
 
 At this stage, we should have 2 EC2 instances:
 
-.. image:: EC2-initial-instances.png
+.. image:: ASAv-IP.png
    :width: 600px
    :alt: Initial EC2 instances
-
 
 Let us setup the SSH forwarding agent so that we can login to the ASAv via the Bastion host:
 
