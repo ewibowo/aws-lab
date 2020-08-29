@@ -142,6 +142,10 @@ Let us setup the SSH forwarding agent so that we can login to the ASAv via the B
    :width: 600px
    :alt: SSH forwarding agent
 
+.. image:: ASA-SSH-forwarding-path.png
+   :width: 600px
+   :alt: SSH forwarding path
+
 Once the SSH key is cached, we can login direct to the ASAv via the Bastion host:
 
 .. image:: ASAv-login.png
