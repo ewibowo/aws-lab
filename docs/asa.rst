@@ -53,6 +53,28 @@ Launch an EC2 instance as a bastion host and enable Auto-assign Public IP so tha
    :width: 600px
    :alt: Bastion hostname
 
+Now we are ready to deploy Cisco ASAv. Let us launch an ASAv EC2 instance from AWS Marketplace:
+
+.. image:: ASAv-BYOL.png
+   :width: 600px
+   :alt: ASAv BYOL
+
+The AWS c5 instances offer much higher performance than the older c3, c4, and m4 instances. We should choose xlarge size if we want to have 1 management plus 3 data plane interfaces (outside, inside and DMZ):
+
+.. image:: ASAv-instance-type.png
+   :width: 600px
+   :alt: ASAv instance type
+
+We place the primary network interface of the ASAv in the management subnet and also enter the Day 0 Configuration:
+
+.. image:: ASAv-subnet-placement.png
+   :width: 600px
+   :alt: ASAv Management Subnet
+
+.. image:: ASAv-user-data.png
+   :width: 600px
+   :alt: ASAv User Data - Day 0 config
+
 Sample Day 0 Configuration
 
 .. code-block:: console
@@ -90,7 +112,19 @@ Sample Day 0 Configuration
    ntp server time-a.nist.gov
    ! required config end 
 
-Here is the topology of ASA on AWS VPC (virtual private cloud)
+We assign a name tag to the ASAv:
+
+.. image:: ASAv-name.png
+   :width: 600px
+   :alt: ASAv name
+
+To tighten the security, we configure the security group of the management interface of the ASA to allow only traffic sourced from Bastion host:
+
+.. image:: ASAv-SG.png
+   :width: 600px
+   :alt: ASAv Security Group
+
+Here is the final topology of ASA on AWS Virtual Private Cloud:
 
 .. image:: ASA.png
    :width: 600px
