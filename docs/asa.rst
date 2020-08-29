@@ -130,11 +130,32 @@ Then launch the ASAv instance:
    :width: 600px
    :alt: ASAv Launching
 
+At this stage, we should have 2 EC2 instances:
+
+.. image:: EC2-initial-instances.png
+   :width: 600px
+   :alt: Initial EC2 instances
+
+
+Let us setup the SSH forwarding agent so that we can login to the ASAv via the Bastion host:
+
+.. image:: ASAv-SSH-forwarding-agent.png
+   :width: 600px
+   :alt: SSH forwarding agent
+
+Once the SSH key is cached, we can login direct to the ASAv via the Bastion host:
+
+.. image:: ASAv-SSH-forwarding-agent.png
+   :width: 600px
+   :alt: SSH forwarding agent
+
+
 Here is the final topology of ASA on AWS Virtual Private Cloud:
 
-.. image:: ASA.png
+.. image:: ASAv-login.png.png
    :width: 600px
-   :alt: ASA
+   :alt: ASAv login
+
 
 Several types of workload servers are placed in each subnet:
 
