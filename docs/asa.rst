@@ -9,7 +9,7 @@ Initial topology:
 * Windows bastion host is deployed in a public subnet to be used for accessing the ASA management interface which is deployed in a private subnet via Local router.
 * Route entry to any IPv4 destination (0.0.0.0/0) with IGW (Internet Gateway) as a target is added into Outside route table to provide Internet access to the Windows bastion host.
 
-.. image:: ASA-initial-topology.png
+.. image:: ASAv-initial-topology.png
    :width: 600px
    :alt: ASA initial topology
 
@@ -130,27 +130,31 @@ Then launch the ASAv instance:
    :width: 600px
    :alt: ASAv Launching
 
-At this stage, we should have 2 EC2 instances:
+At this stage, we should have two EC2 instances:
 
 .. image:: ASAv-IP.png
    :width: 600px
    :alt: Initial EC2 instances
 
-Let us setup the SSH forwarding agent so that we can login to the ASAv via the Bastion host:
-
-.. image:: ASAv-SSH-forwarding-agent.png
-   :width: 600px
-   :alt: SSH forwarding agent
+We want to be able to login  from localhost (my laptop) to the ASAv via the Bastion host. In order to do so, we need to setup SSH forwarding agent:
 
 .. image:: ASA-SSH-forwarding-path.png
    :width: 600px
    :alt: SSH forwarding path
+
+Let us cache ap-southeast-1.pem which is the private key to authenticate to the Bastion host:
+
+.. image:: ASAv-SSH-forwarding-agent.png
+   :width: 600px
+   :alt: SSH forwarding agent
 
 Once the SSH key is cached, we can login direct to the ASAv via the Bastion host:
 
 .. image:: ASAv-login.png
    :width: 600px
    :alt: ASAv login
+
+Up to this point, we have provisioned the management plane of ASA. We will continue to provide the data plane by deploying Inside, Outside and DMZ interfaces on the ASA.
 
 Here is the final topology of ASA on AWS Virtual Private Cloud.
 
