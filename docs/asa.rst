@@ -148,11 +148,29 @@ Let us cache ap-southeast-1.pem which is the private key to authenticate to the 
    :width: 600px
    :alt: SSH forwarding agent
 
+.. code-block:: console
+
+   localhost aws-lab$ ls -l ap-southeast-1.pem
+   -r--------@ 1 ewi  ANT\Domain Users  1692 30 Aug 05:37 ap-southeast-1.pem
+
+   localhost aws-lab$ ssh-add -D
+   All identities removed.
+
+   localhost aws-lab$ ssh-add ap-southeast-1.pem
+   Identity added: ap-southeast-1.pem (ap-southeast-1.pem)
+   
+   localhost aws-lab$ ssh-add -L
+   ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcxZ4N97ex51jXshMokezqlFEzYVDb3CjpfDlY82D1kVRpyWvEyuHKFvXIVJ2moMDVDq/nFnmbVlY610yz3XIqWMyCS86rWcrpIIQrUtQllHjOkM2jcpccFwsVbwrFTGMH/4HU/+2vw6j/3DBMs2CsPozV2Zx0/dAxE0/r1DVr7VVAKCPC/B2Buyh1bIXdMPHdpWMbjiuhtVVVcMktnraeSBWxS0jp2rHo7d0eoTM/4A84ZYQG8SKweJ+rkGbitkUd5t9N1VpwdYVsu652qpJsg/VGpKy8LkTMYaF2uJ6yfwZBsLWfHmW5gJw2UuVE3xZAW1zoOXj+mccTRAhCUwy1 ap-southeast-1.pem
+
 Once the SSH key is cached, we can login direct to the ASAv via the Bastion host:
 
 .. image:: ASAv-login.png
    :width: 600px
    :alt: ASAv login
+
+.. code-block:: console
+
+   localhost aws-lab$ ssh -A ubuntu@18.141.25.204 ssh admin@172.16.0.254
 
 Up to this point, we have provisioned the management plane of ASA. We will continue to provide the data plane by deploying Inside, Outside and DMZ interfaces on the ASA.
 
