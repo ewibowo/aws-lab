@@ -169,16 +169,3 @@ Once the SSH key is cached, we can login direct to the ASAv via the Bastion host
    localhost aws-lab$ ssh -A ubuntu@18.141.25.204 ssh admin@172.16.0.254
 
 Up to this point, we have provisioned the management plane of ASA. We will continue to provide the data plane by deploying Inside, Outside and DMZ interfaces on the ASA.
-
-Here is the final topology of ASA on AWS Virtual Private Cloud.
-
-Several types of workload servers are placed in each subnet:
-
-* Windows Bastion as a jump box 
-* Ubuntu MGMT as a TFTP server 
-* Ubuntu Client in inside (protected zone)
-* Ubuntu Server in DMZ (de-militarised zone)
-
-.. image:: ASA-Workload.png
-   :width: 600px
-   :alt: ASA
