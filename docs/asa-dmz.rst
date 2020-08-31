@@ -98,6 +98,10 @@ Lastly, launch an EC2 instance as a web server in DMZ subnet with private IP 172
 **NOTE**
 Double-NAT has happened. That is, IP address 172.16.1.253 (outside static NAT of ASAv) is translated by AWS IGW to 13.250.140.197 (Elastic IP).
 
+.. image:: ASAv-Double-NAT.png
+   :width: 600px
+   :alt: Double NAT
+
 References
 ----------
 * DMZ Configuration Example https://www.speaknetworks.com/cisco-asa-dmz-configuration-example/ 
