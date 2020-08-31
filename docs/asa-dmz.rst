@@ -93,7 +93,10 @@ If we want to allow hosts in DMZ subnet to access Internet, we can add this NAT 
 
     nat (dmz,outside) after-auto source dynamic any interface
 
-Lastly, launch an EC2 instance as a web server in DMZ subnet with private IP 172.16.3.100:
+Lastly, launch an EC2 instance as a web server in DMZ subnet with private IP 172.16.3.100 and access it via its public IP http://13.250.140.197
+
+**NOTE**
+Double-NAT has happened. That is, IP address 172.16.1.253 (outside static NAT) is translated by AWS IGW to 13.250.140.197.
 
 References
 ----------
