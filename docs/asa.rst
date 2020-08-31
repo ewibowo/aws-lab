@@ -152,7 +152,7 @@ Let us cache ap-southeast-1.pem which is the private key to authenticate to the 
    localhost aws-lab$ ssh-add -L
    ssh-rsa <redacted - public key of ap-southeast-1.pem key pair>
 
-Once the SSH key is cached, we can login direct to the ASAv via the Bastion host:
+Once the SSH key is cached, we can login direct to the ASAv (172.16.0.254) via the Bastion host (18.141.25.204):
 
 .. code-block:: console
 
