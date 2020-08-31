@@ -144,10 +144,6 @@ We want to be able to login  from localhost (my laptop) to the ASAv via the Bast
 
 Let us cache ap-southeast-1.pem which is the private key to authenticate to the Bastion host:
 
-.. image:: ASAv-SSH-forwarding-agent.png
-   :width: 600px
-   :alt: SSH forwarding agent
-
 .. code-block:: console
 
    localhost aws-lab$ ls -l ap-southeast-1.pem
@@ -158,9 +154,9 @@ Let us cache ap-southeast-1.pem which is the private key to authenticate to the 
 
    localhost aws-lab$ ssh-add ap-southeast-1.pem
    Identity added: ap-southeast-1.pem (ap-southeast-1.pem)
-   
+
    localhost aws-lab$ ssh-add -L
-   ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcxZ4N97ex51jXshMokezqlFEzYVDb3CjpfDlY82D1kVRpyWvEyuHKFvXIVJ2moMDVDq/nFnmbVlY610yz3XIqWMyCS86rWcrpIIQrUtQllHjOkM2jcpccFwsVbwrFTGMH/4HU/+2vw6j/3DBMs2CsPozV2Zx0/dAxE0/r1DVr7VVAKCPC/B2Buyh1bIXdMPHdpWMbjiuhtVVVcMktnraeSBWxS0jp2rHo7d0eoTM/4A84ZYQG8SKweJ+rkGbitkUd5t9N1VpwdYVsu652qpJsg/VGpKy8LkTMYaF2uJ6yfwZBsLWfHmW5gJw2UuVE3xZAW1zoOXj+mccTRAhCUwy1 ap-southeast-1.pem
+   ssh-rsa <redacted - public key of ap-southeast-1.pem key pair>
 
 Once the SSH key is cached, we can login direct to the ASAv via the Bastion host:
 
