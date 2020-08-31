@@ -15,6 +15,7 @@ Let us start by deploying components on AWS first:
 #. Create a security group named allow-all that allows all traffic because we want to control the access via ASAv.
 #. Create Outside and Inside ENIs (elastic network interfaces) of ASAv with security group allow-all. 
 #. Attach Outside and Inside  ENIs to the ASAv.
+#. Disable source and destination check of Outside and Inside ENIs.
 #. Associate an EIP to the Outside ENI.
 #. Create a route table, associate it with Inside subnet and add a default route entry for any destination (0.0.0.0/0) with the target of Inside ENI of ASAv.
 
