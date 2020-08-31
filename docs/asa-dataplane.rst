@@ -158,7 +158,7 @@ Create a NAT rule (hide NAT) to translate the source IP address of inside networ
 
    nat (inside,outside) after-auto source dynamic any interface
 
-If we want to tighten the secucure, we can create a route entry for destination of outside network (172.16.1.0/24) where Bastion host resides with the target of Local router (172.16.0.1) via management interface:
+If we want to tighten the security, we can create a route entry for destination of outside network (172.16.1.0/24) where Bastion host resides with the target of Local router (172.16.0.1) via management interface:
 
 .. code-block:: console
 
