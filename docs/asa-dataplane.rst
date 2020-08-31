@@ -7,6 +7,8 @@ In this chapter, we will be deploying the data plane of ASA by configuring Outsi
    :width: 600px
    :alt: ASAv Inside Outside
 
+AWS Components
+--------------
 Let us start by deploying components on AWS first:
 
 #. Create a private subnet for Inside network and assign subnet 172.16.2.0/24.
@@ -70,7 +72,18 @@ Go back to VPC dash board. Then create Inside route table, associate it with Ins
    :width: 600px
    :alt: Default route in Inside route table
 
-Now we are ready to configure the ASAv:
+ASAv Configuration
+------------------
+Now we are ready to configure the ASAv.
+
+Create a route entry for destination of outside network where Bastion host resides with the target of Local router (172.16.0.1) via management interface:
+
+.. code-block:: console
+
+   route management 172.16.0.0 255.255.0.0 172.16.0.1
+
+**NOTE**
+The route is installed in the management VRF (virtual routing and forwarding) of the ASA. Therefore, to check the route, please use `show route management` instead of `show route` which is showing the default VRF. 
 
 Assign a static IP address of 172.16.0.254/24 to management network if the Day 0 Confguration that we entered in the User Data of ASAv EC2 is not set:
 
@@ -105,15 +118,6 @@ Assign IP address 172.16.2.254/24 to inside network interface:
    security-level 100
    ip address 172.16.2.254 255.255.255.0
    no shut
-
-Create a route entry for destination of outside network where Bastion host resides with the target of Local router (172.16.0.1) via management interface:
-
-.. code-block:: console
-
-   route management 172.16.0.0 255.255.0.0 172.16.0.1
-
-**NOTE**
-The route is installed in the management VRF (virtual routing and forwarding) of the ASA. Therefore, to check the route, please use `show route management` instead of `show route` which is showing the default VRF. 
 
 Create a default route entry or any destination (0.0.0.0/0) with the target of Local router (172.16.1.1) via outside interface:
 
