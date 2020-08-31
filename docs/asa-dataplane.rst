@@ -100,11 +100,11 @@ ASAv Configuration
 ------------------
 Now we are ready to configure the ASAv.
 
-Create a route entry for destination of outside network where Bastion host resides with the target of Local router (172.16.0.1) via management interface:
+Create a route entry for destination of outside network (172.16.1.0/24) where Bastion host resides with the target of Local router (172.16.0.1) via management interface:
 
 .. code-block:: console
 
-   route management 172.16.0.0 255.255.0.0 172.16.0.1
+   route management 172.16.1.0 255.255.255.0 172.16.0.1
 
 **NOTE**
 The route is installed in the management VRF (virtual routing and forwarding) of the ASA. Therefore, to check the route, please use `show route management` instead of `show route` which is showing the default VRF. 
