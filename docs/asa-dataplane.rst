@@ -52,6 +52,30 @@ And then followed by Inside-ENI:
    :width: 600px
    :alt: Inside ENI attachment to ASA
 
+Disable source destination check on both Inside and Outside ENIs:
+
+.. image:: Inside-src-dst-check.png
+   :width: 600px
+   :alt: Inside source destination check
+
+.. image:: Inside-change-src-dst-check.png
+   :width: 600px
+   :alt: Change Inside source destination check
+
+.. image:: Outside-change-src-dst-check.png
+   :width: 600px
+   :alt: Change Outside source destination check
+
+Associate an Elastic IP (public IPv4) to Outside ENI:
+
+.. image:: Outside-assoc-EIP.png
+   :width: 600px
+   :alt: Associate Outside ENI to EIP
+
+.. image:: Outside-allocate-EIP-3.png
+   :width: 600px
+   :alt: Associate Outside ENI to EIP
+
 Reboot the ASAv instance so that the new network interfaces are recogise by ASAv operating system:
 
 .. image:: ASAv-reboot.png
@@ -133,6 +157,9 @@ Add icmp to the inspection policy map which is applied in the global scope:
    class inspection_default
    inspect icmp
    inspect icmp error
+
+**NOTE**
+policy-map global_policy is applied in the global scope: `service-policy global_policy global`
 
 Create a NAT rule (hide NAT) to translate the source IP address of inside network:
 
