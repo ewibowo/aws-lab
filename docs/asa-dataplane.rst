@@ -167,7 +167,19 @@ Create a NAT rule (hide NAT) to translate the source IP address of inside networ
 
    nat (inside,outside) after-auto source dynamic any interface
 
-Launch an EC2 instance as a client host with IP address 172.16.2.100 in the Inside subnet:
+Launch an EC2 instance as a client host with IP address 172.16.2.100 in the Inside subnet. Then perform ping to public IP 8.8.8.8:
+
+.. code-block:: console
+
+   ubuntu@ip-172-16-2-100:~$ ping 8.8.8.8
+   PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+   64 bytes from 8.8.8.8: icmp_seq=1 ttl=51 time=1.68 ms
+   64 bytes from 8.8.8.8: icmp_seq=2 ttl=51 time=1.46 ms
+   64 bytes from 8.8.8.8: icmp_seq=3 ttl=51 time=1.26 ms
+   64 bytes from 8.8.8.8: icmp_seq=4 ttl=51 time=1.43 ms
+
+
+
 
 
 
