@@ -100,15 +100,6 @@ ASAv Configuration
 ------------------
 Now we are ready to configure the ASAv.
 
-Create a route entry for destination of outside network (172.16.1.0/24) where Bastion host resides with the target of Local router (172.16.0.1) via management interface:
-
-.. code-block:: console
-
-   route management 172.16.1.0 255.255.255.0 172.16.0.1
-
-**NOTE**
-The route is installed in the management VRF (virtual routing and forwarding) of the ASA. Therefore, to check the route, please use `show route management` instead of `show route` which is showing the default VRF. 
-
 Assign a static IP address of 172.16.0.254/24 to management network if the Day 0 Confguration that we entered in the User Data of ASAv EC2 is not set:
 
 .. code-block:: console
@@ -166,6 +157,22 @@ Create a NAT rule (hide NAT) to translate the source IP address of inside networ
 .. code-block:: console
 
    nat (inside,outside) after-auto source dynamic any interface
+
+If we want to tighten the secucure, we can create a route entry for destination of outside network (172.16.1.0/24) where Bastion host resides with the target of Local router (172.16.0.1) via management interface:
+
+.. code-block:: console
+
+   route management 172.16.1.0 255.255.255.0 172.16.0.1
+
+And then remove the default route via the management interface:
+
+.. code-block:: console
+
+   no route management 0.0.0.0 0.0.0.0 172.16.0.1
+
+
+**NOTE**
+The route is installed in the management VRF (virtual routing and forwarding) of the ASA. Therefore, to check the route, please use `show route management` instead of `show route` which is showing the default VRF. 
 
 Launch an EC2 instance as a client host with IP address 172.16.2.100 in the Inside subnet. Then perform ping to public IP 8.8.8.8:
 
