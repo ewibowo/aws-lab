@@ -11,6 +11,7 @@ Let's start by creating AWS components:
 
 #. Create DMZ subnet.
 #. Create DMZ ENI with security group allow-all.
+#. Create a route table, associate it with DMZ subnet and add a default route entry for any destination (0.0.0.0/0) with the target of DMZ ENI of ASAv.
 #. Disable source destination check of DMZ ENI.
 #. Attach DMZ ENI to the ASAv instance.
 #. Reboot the ASAv instance so that DMZ ENI is recognised by ASAv operating system.
@@ -65,6 +66,7 @@ On ASAv, first we configure the IP address of dmz interface:
     nameif dmz
     security-level 50
     ip address 172.16.3.254 255.255.255.0
+    no shut
 
 We create the following network objects and auto-NAT rule:
 
@@ -78,8 +80,18 @@ We create the following network objects and auto-NAT rule:
     object network ubuntu-server-dmz
         nat (dmz,outside) static ubuntu-server-outside service tcp www www 
 
+Then we create access-list entry and apply it to ingress traffic of outside interface:
+
+.. code-block:: console
+
+   access-list outside_access_in extended permit tcp any4 any4 eq www log disable 
+   access-group outside_access_in in interface outside
+
 If we want to allow hosts in DMZ subnet to access Internet, we can add this NAT (hide-NAT) rule:
 
 .. code-block:: console
 
     nat (dmz,outside) after-auto source dynamic any interface
+
+Lastly, launch an EC2 instance as a web server in DMZ subnet with private IP 172.16.3.100:
+
