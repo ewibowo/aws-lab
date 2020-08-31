@@ -6,8 +6,8 @@ In this chapter, we will be discussing about how to deploy Cisco ASAv (virtual A
 Initial topology:
 
 * The primary elastic network interface (MGMT ENI) is mapped to the management interface (Management0/0).
-* Bastion host is deployed in a public subnet to be used for accessing the ASA management interface which is deployed in a private subnet via Local router.
-* Route entry to any IPv4 destination (0.0.0.0/0) with IGW (Internet Gateway) as a target is added into Outside route table to provide Internet access to the Windows bastion host.
+* Bastion host is deployed in a public subnet to be used for accessing the ASA management interface which is deployed in a private subnet.
+* Route entry to any IPv4 destination (0.0.0.0/0) with IGW (Internet Gateway) as a target is added into Outside route table to provide Internet access to the Bastion host.
 
 .. image:: ASAv-initial-topology.png
    :width: 600px

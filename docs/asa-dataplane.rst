@@ -1,7 +1,7 @@
 Configure the data plane of ASAv
 ================================
 
-In this chapter, we will be deploying the data plane of ASA by configuring Outside, and Inside subnets:
+In this chapter, we will be deploying the data plane of ASA by configuring Outside and Inside subnets:
 
 .. image:: ASAv-inside-outside.png
    :width: 600px
@@ -9,14 +9,14 @@ In this chapter, we will be deploying the data plane of ASA by configuring Outsi
 
 AWS Components
 --------------
-Let us start by deploying components on AWS first:
+Let's start by deploying components on AWS first:
 
 #. Create a private subnet for Inside network and assign subnet 172.16.2.0/24.
-#. Create a security group named allow-all that allows all traffic because we want to control the access via ASAv.
+#. Create a security group named allow-all that allows all traffic because we will let ASAv control the network access.
 #. Create Outside and Inside ENIs (elastic network interfaces) of ASAv with security group allow-all. 
 #. Attach Outside and Inside  ENIs to the ASAv.
-#. Disable source and destination check of Outside and Inside ENIs.
-#. Associate an EIP to the Outside ENI.
+#. Disable source and destination check of Outside and Inside ENIs because we will allow traffic to traverse through ASAv.
+#. Associate an EIP to the Outside ENI. 
 #. Create a route table, associate it with Inside subnet and add a default route entry for any destination (0.0.0.0/0) with the target of Inside ENI of ASAv.
 
 On AWS Management Console, go to the VPC dashboard and start by creating a private subnet for Inside network 172.16.2.0/24:
@@ -155,7 +155,7 @@ Add icmp to the inspection policy map which is applied in the global scope:
 **NOTE**
 policy-map global_policy is applied in the global scope: `service-policy global_policy global`
 
-Create a NAT rule (hide NAT) to translate the source IP address of inside network:
+Create a NAT rule (hide NAT) to translate the source IP address of inside network to the EIP of Outside interface of ASAv:
 
 .. code-block:: console
 
