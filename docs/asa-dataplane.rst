@@ -70,15 +70,74 @@ Go back to VPC dash board. Then create Inside route table, associate it with Ins
    :width: 600px
    :alt: Default route in Inside route table
 
-
-
-
 Now we are ready to configure the ASAv:
 
-#. Assign IP address 172.16.1.254/24 to outside network interface.
-#. Assign IP address 172.16.2.254/24 to inside network interface.
-#. Create a default route entry or any destination (0.0.0.0/0) with the target of Local router (172.16.1.1) via outside interface.
-#. Add icmp to the inspection policy map which is applied in the global scope.
-#. Create a NAT rule (hide NAT) to translate the source IP address of inside network.
+#. Assign a static IP address of 172.16.0.254/24 to management network if the Day 0 Confguration that we entered in the User Data of ASAv EC2 is not set:
+
+.. code-block:: console
+
+   interface management0/0
+   management-only
+   nameif management
+   security-level 100
+   ip address 172.16.0.254 255.255.255.0
+   no shut
+
+Your management SSH session might be disconnected. If so, please login back in.
+
+#. Assign IP address 172.16.1.254/24 to outside network interface:
+
+.. code-block:: console
+
+   interface TenGigabitEthernet0/0
+   nameif outside
+   security-level 0
+   ip address 172.16.1.254 255.255.255.0
+   no shut
+
+#. Assign IP address 172.16.2.254/24 to inside network interface:
+
+.. code-block:: console
+
+   interface TenGigabitEthernet0/1
+   nameif inside
+   security-level 100
+   ip address 172.16.2.254 255.255.255.0
+   no shut
+
+#. Create a route entry for destination of outside network where Bastion host resides with the target of Local router (172.16.0.1) via management interface:
+
+.. code-block:: console
+
+   route management 172.16.0.0 255.255.0.0 172.16.0.1
+
+Note: The route is installed in the management VRF (virtual routing and forwarding) of the ASA. Therefore, to check the route, please use `show route management` instead of `show route` which is showing the default VRF. 
+
+#. Create a default route entry or any destination (0.0.0.0/0) with the target of Local router (172.16.1.1) via outside interface:
+
+.. code-block:: console
+
+   route outside 0.0.0.0 0.0.0.0 172.16.1.1
+
+#. Add icmp to the inspection policy map which is applied in the global scope:
+
+.. code-block:: console
+
+   policy-map global_policy
+   class inspection_default
+   inspect icmp
+   inspect icmp error
+
+#. Create a NAT rule (hide NAT) to translate the source IP address of inside network:
+
+.. code-block:: console
+
+   nat (inside,outside) after-auto source dynamic any interface
+
+#. Launch an EC2 instance as a client host with IP address 172.16.2.100 in the Inside subnet:
+
+
+
+
 
 
