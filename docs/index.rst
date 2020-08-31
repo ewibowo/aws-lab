@@ -19,6 +19,6 @@ Indices and tables
 
 Author
 =======
-Edi Wibowo
-Email: ewibowo@live.com 
-LinkedIn: https://www.linkedin.com/in/ediwibowo 
+* Edi Wibowo
+* Email: ewibowo@live.com 
+* LinkedIn: https://www.linkedin.com/in/ediwibowo 
