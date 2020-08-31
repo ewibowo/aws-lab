@@ -16,5 +16,8 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-Attachments
-===========
+Author
+=======
+Edi Wibowo
+Email: ewibowo@live.com 
+LinkedIn: https://www.linkedin.com/in/ediwibowo 
