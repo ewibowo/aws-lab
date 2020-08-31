@@ -138,7 +138,7 @@ At this stage, we should have two EC2 instances:
 
 We want to be able to login  from localhost (my laptop) to the ASAv via the Bastion host. In order to do so, we need to setup SSH forwarding agent:
 
-.. image:: ASA-SSH-forwarding-path.png
+.. image:: ASAv-SSH-forwarding-path.png
    :width: 600px
    :alt: SSH forwarding path
 
