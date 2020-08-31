@@ -160,10 +160,6 @@ Let us cache ap-southeast-1.pem which is the private key to authenticate to the 
 
 Once the SSH key is cached, we can login direct to the ASAv via the Bastion host:
 
-.. image:: ASAv-login.png
-   :width: 600px
-   :alt: ASAv login
-
 .. code-block:: console
 
    localhost aws-lab$ ssh -A ubuntu@18.141.25.204 ssh admin@172.16.0.254
