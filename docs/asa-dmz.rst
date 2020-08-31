@@ -87,7 +87,7 @@ Then we create access-list entry and apply it to ingress traffic of outside inte
    access-list outside_access_in extended permit tcp any4 any4 eq www log disable 
    access-group outside_access_in in interface outside
 
-If we want to allow hosts in DMZ subnet to access Internet, we can add this NAT (hide-NAT) rule:
+If we want to allow hosts in DMZ subnet to initiate traffic to access Internet, we can add this NAT (hide-NAT) rule:
 
 .. code-block:: console
 
