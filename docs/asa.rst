@@ -6,7 +6,7 @@ In this chapter, we will be discussing about how to deploy Cisco ASAv (virtual A
 Initial topology:
 
 * The primary elastic network interface (MGMT ENI) is mapped to the management interface (Management0/0).
-* Windows bastion host is deployed in a public subnet to be used for accessing the ASA management interface which is deployed in a private subnet via Local router.
+* Bastion host is deployed in a public subnet to be used for accessing the ASA management interface which is deployed in a private subnet via Local router.
 * Route entry to any IPv4 destination (0.0.0.0/0) with IGW (Internet Gateway) as a target is added into Outside route table to provide Internet access to the Windows bastion host.
 
 .. image:: ASAv-initial-topology.png
@@ -159,3 +159,8 @@ Once the SSH key is cached, we can login direct to the ASAv via the Bastion host
    localhost aws-lab$ ssh -A ubuntu@18.141.25.204 ssh admin@172.16.0.254
 
 Up to this point, we have provisioned the management plane of ASA. We will continue to provide the data plane by deploying Inside, Outside and DMZ interfaces on the ASA.
+
+References
+----------
+* Deploy the ASAv On the AWS Cloud  https://www.cisco.com/c/en/us/td/docs/security/asa/asa913/asav/getting-started/asav-913-gsg/asav_aws.html
+* Cisco Adaptive Security Virtual Appliance (ASAv) - BYOL https://aws.amazon.com/marketplace/pp/B00WRGASUC?ref=cns_1clkPro
