@@ -8,6 +8,7 @@ Table of Contents
 
    asa
    asa-dataplane
+   asa-dmz
 
 Indices and tables
 ==================
