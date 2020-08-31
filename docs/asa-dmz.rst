@@ -3,7 +3,7 @@ DMZ subnet behind the ASAv
 
 In this chapter, we add the DMZ subnet to place a web server that can be accessed from the Internet:
 
-.. image:: ASAv-DMZ.png
+.. image:: ASAv-Only-DMZ.png
    :width: 600px
    :alt: DMZ
 
