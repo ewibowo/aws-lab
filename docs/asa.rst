@@ -112,12 +112,6 @@ Sample Day 0 Configuration
    ntp server time-a.nist.gov
    ! required config end 
 
-We assign a name tag to the ASAv:
-
-.. image:: ASAv-name.png
-   :width: 600px
-   :alt: ASAv name
-
 To tighten the security, we configure the security group of the management interface of the ASA to allow only traffic sourced from Bastion host:
 
 .. image:: ASAv-SG.png
