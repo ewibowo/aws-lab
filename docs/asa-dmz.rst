@@ -95,3 +95,6 @@ If we want to allow hosts in DMZ subnet to access Internet, we can add this NAT 
 
 Lastly, launch an EC2 instance as a web server in DMZ subnet with private IP 172.16.3.100:
 
+References
+----------
+* DMZ Configuration Example https://www.speaknetworks.com/cisco-asa-dmz-configuration-example/ 
