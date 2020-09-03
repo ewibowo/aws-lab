@@ -29,11 +29,11 @@ Route Tables
 The management interface can be associated with its own management-only route table:
 
 .. image:: ASA-management-only-RT.png
-   :width: 400px
+   :width: 600px
    :alt: ASA management-only Route Tables
 
 Alternatively, the management interface can be associated with the main route table:
 
 .. image:: ASA-main-route-table.png
-   :width: 400px
+   :width: 600px
    :alt: ASA main Route Tables
