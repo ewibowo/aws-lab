@@ -6,6 +6,7 @@ Table of Contents
 .. toctree::
    :maxdepth: 2
 
+   asa-fundamentals
    asa
    asa-dataplane
    asa-dmz
