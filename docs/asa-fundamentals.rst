@@ -13,7 +13,7 @@ Each ASA interface must have ip address, security-level and nameif configured to
 
 From a higher security level to a lower security level:
 
-* No ACL (access control list) is required for traffic to traverse from a higher security level to a lower security level.
+* ACL (access control list) is not required for traffic to traverse from a higher security level to a lower security level.
 * The stateful inspection determines whether the return traffic is allowed to make it back through.
 
 .. image:: ASA-security-level-high-to-low.png
