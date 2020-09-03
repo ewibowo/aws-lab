@@ -44,4 +44,4 @@ Alternatively, the management interface can be associated with the main route ta
    :width: 600px
    :alt: ASA main Route Tables
 
-Next step, let us deploy Cisco ASA in Amazon Web Services cloud.
+Next step, let us deploy virtualised Cisco ASA (ASAv) in Amazon Web Services cloud.
