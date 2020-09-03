@@ -17,6 +17,8 @@ From a higher security level to a lower security level:
 From a lower security level to a higher security level:
 
 * ACL is required for initiating traffic to traverse from a lower security level to a higher security level.
+The ACL is usually applied (using access-group CLI) ingress on the interface with the lower security level (e.g. outside interface);
+although it can also be applied egress on the interface with the higher security level (e.g. dmz interface).
 * No ACL is required for the return traffic from a higher security level to a lower security level.
 
 .. image:: ASA-security-level-low-to-high.png
