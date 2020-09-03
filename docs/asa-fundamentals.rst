@@ -14,7 +14,7 @@ From a higher security level to a lower security level:
    :width: 400px
    :alt: ASA Security Level: High to Low
 
-From a lower security level to a high security level:
+From a lower security level to a higher security level:
 
 * ACL is required for initiating traffic to traverse from a lower security level to a higher security level.
 * No ACL is required for the return traffic from a higher security level to a lower security level.
