@@ -7,7 +7,7 @@ Security Level
 
 From a higher security level to a lower security level:
 
-* No ACL is required for traffic traverse from a higher security level to a lower security level.
+* No ACL is required for traffic to traverse from a higher security level to a lower security level.
 * The stateful inspection determines whether the return traffic is allowed to make it back through.
 
 .. image:: ASA-security-level-high-to-low.png
@@ -16,7 +16,7 @@ From a higher security level to a lower security level:
 
 From a lower security level to a high security level:
 
-* ACL is required for initiating traffic traverse from a lower security level to a higher security level.
+* ACL is required for initiating traffic to traverse from a lower security level to a higher security level.
 * No ACL is required for the return traffic from a higher security level to a lower security level.
 
 .. image:: ASA-security-level-low-to-high.png
