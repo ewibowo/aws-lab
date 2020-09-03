@@ -2,8 +2,14 @@
 ASA Fundamentals
 ================
 
+ASA in Cisco ASA stands for Adaptive Security Appliance.
+
+Cisco ASA is a  security device that combines firewall, antivirus, intrusion prevention, and virtual private network (VPN) capabilities.  
+
 Security Level
 --------------
+
+Each ASA interface must have ip address, security-level and nameif configured to work. Security levels are numbered from 0 to 100. 
 
 From a higher security level to a lower security level:
 
@@ -37,3 +43,5 @@ Alternatively, the management interface can be associated with the main route ta
 .. image:: ASA-main-route-table.png
    :width: 600px
    :alt: ASA main Route Tables
+
+Next step, let us deploy Cisco ASA in Amazon Web Services cloud.
