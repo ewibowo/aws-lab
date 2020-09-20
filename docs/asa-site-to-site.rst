@@ -103,3 +103,15 @@ ASAv configuration:
         no synchronization
     exit-address-family
     exit
+
+Ping from Ubuntu client:
+
+.. code-block:: console
+
+    ubuntu@ip-172-16-2-100:~$ ping 10.0.2.14
+    PING 10.0.2.14 (10.0.2.14) 56(84) bytes of data.
+    64 bytes from 10.0.2.14: icmp_seq=52 ttl=63 time=94.6 ms
+    64 bytes from 10.0.2.14: icmp_seq=53 ttl=63 time=95.8 ms
+    64 bytes from 10.0.2.14: icmp_seq=54 ttl=63 time=96.2 ms
+    64 bytes from 10.0.2.14: icmp_seq=55 ttl=63 time=95.4 ms
+    64 bytes from 10.0.2.14: icmp_seq=56 ttl=63 time=95.1 ms
